@@ -1,4 +1,4 @@
-// Dados do Quiz sobre Cidades Sustentáveis
+// Dados das Perguntas
 const quizData = [
     {
         question: "Qual cidade brasileira lidera o saneamento básico com 100% de água e esgoto tratados?",
@@ -16,31 +16,34 @@ const quizData = [
         question: "Qual o principal objetivo ambiental de expandir frotas de ônibus elétricos nas metrópoles?",
         options: ["Aumentar a velocidade dos veículos.", "Gerar mais empregos digitais.", "Descarbonizar o transporte coletivo urbano."],
         correct: 2,
-        explanation: "A eletrificação de frotas reduz drasticamente a emissão de gases do efeito estufa e melhora a qualidade do ar nas cidades."
+        explanation: "A eletrificação de frotas reduz drasticamente a encontros de gases do efeito estufa e melhora a qualidade do ar nas cidades."
     }
 ];
 
 let currentQuestionIndex = 0;
+let totalAcertos = 0;
 
-// Função para iniciar o quiz com segurança garantindo que os elementos existem
-function initQuiz() {
+// Garante a execução apenas quando a página estiver totalmente carregada
+document.addEventListener("DOMContentLoaded", () => {
     const questionElement = document.getElementById("question");
     const optionsContainer = document.getElementById("options");
     const feedbackElement = document.getElementById("feedback");
     const nextButton = document.getElementById("next-btn");
 
-    // Verifica se os elementos realmente existem na tela antes de rodar
-    if (!questionElement || !optionsContainer || !feedbackElement || !nextButton) {
-        console.error("Elementos do HTML não foram encontrados.");
-        return;
-    }
+    // Validação de segurança dos elementos
+    if (!questionElement || !optionsContainer || !feedbackElement || !nextButton) return;
 
+    // Função interna para carregar cada nova pergunta
     function loadQuestion() {
-        resetState();
         
+        nextButton.style.display = "none";
+        feedbackElement.style.display = "none";
+        optionsContainer.innerHTML = "";
+
         const currentQuestion = quizData[currentQuestionIndex];
         questionElement.textContent = currentQuestion.question;
 
+        // Cria os botões das alternativas
         currentQuestion.options.forEach((option, index) => {
             const button = document.createElement("button");
             button.textContent = option;
@@ -50,68 +53,48 @@ function initQuiz() {
         });
     }
 
-    function resetState() {
-        nextButton.classList.add("hidden");
-        feedbackElement.classList.add("hidden");
-        feedbackElement.className = "feedback";
-        optionsContainer.innerHTML = "";
-    }
-
+    
     function selectOption(selectedIndex, selectedButton) {
         const currentQuestion = quizData[currentQuestionIndex];
         const allButtons = optionsContainer.querySelectorAll(".option-btn");
 
+    
         allButtons.forEach(btn => btn.disabled = true);
 
         if (selectedIndex === currentQuestion.correct) {
             selectedButton.classList.add("correct");
             feedbackElement.textContent = `✅ Correto! ${currentQuestion.explanation}`;
-            feedbackElement.classList.add("correct");
+            feedbackElement.className = "feedback correct";
+            totalAcertos++;
         } else {
             selectedButton.classList.add("wrong");
             allButtons[currentQuestion.correct].classList.add("correct");
             feedbackElement.textContent = `❌ Incorreto. ${currentQuestion.explanation}`;
-            feedbackElement.classList.add("wrong");
+            feedbackElement.className = "feedback wrong";
         }
 
-        feedbackElement.classList.remove("hidden");
-        nextButton.classList.remove("hidden");
+        
+        feedbackElement.style.display = "block";
+        nextButton.style.display = "inline-block";
     }
 
-        nextButton.addEventListener("click", () => {
+    // Configura o clique do botão de avançar
+    nextButton.addEventListener("click", () => {
         currentQuestionIndex++;
+
         if (currentQuestionIndex < quizData.length) {
             loadQuestion();
         } else {
-            // Tela de finalização do quiz
-            questionElement.textContent = "🎉 Parabéns! Você concluiu o desafio sobre Cidades Sustentáveis.";
+            // Tela finalizada: remove os botões e exibe a mensagem com a pontuação
+            questionElement.innerHTML = `🎉 <strong>Parabéns!</strong> Você concluiu o desafio sobre Cidades Sustentáveis.<br><br>Sua pontuação final foi de <strong>${totalAcertos} de ${quizData.length}</strong> acertos.`;
             optionsContainer.innerHTML = "";
-            feedbackElement.classList.add("hidden");
+            feedbackElement.style.display = "none";
             
             
-            nextButton.classList.add("hidden");
-            nextButton.style.display = "none"; 
+            nextButton.style.display = "none";
         }
     });
 
-        currentQuestionIndex++;
-        if (currentQuestionIndex < quizData.length) {
-            loadQuestion();
-        } else {
-            questionElement.textContent = "🎉 Parabéns! Você concluiu o desafio sobre Cidades Sustentáveis.";
-            optionsContainer.innerHTML = "";
-            feedbackElement.classList.add("hidden");
-            nextButton.classList.add("hidden");
-        }
-    });
-
-    // Executa a primeira pergunta
+    // Inicializa o quiz na primeira pergunta
     loadQuestion();
-}
-
-// Execução imediata e segura
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initQuiz);
-} else {
-    initQuiz();
-}
+});
