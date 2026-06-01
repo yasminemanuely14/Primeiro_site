@@ -1,11 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EcoCidades | Consumo Consciente</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <div class="logo">🏙️ EcoCidades</div>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#ideia">O Conceito</a></li>
+                <li><a href="#pilares">Pilares Urbanos</a></li>
+                <li><a href="#desafio">Desafio Verde</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>Cidades Inteligentes, Planeta Vivo</h1>
+            <p>Pequenas escolhas no nosso dia a dia transformam o futuro do nosso espaço urbano.</p>
+            <a href="#ideia" class="btn">Mude Seus Hábitos</a>
+        </div>
+    </section>
+
+    <section id="ideia" class="container">
+        <h2>O que é uma Cidade Sustentável?</h2>
+        <p>Uma cidade sustentável é aquela que cresce sem destruir o futuro. Ela promove a mobilidade limpa, o descarte correto de resíduos, a eficiência energética e o consumo consciente por parte de todos os seus cidadãos.</p>
+    </section>
+
+    <section id="pilares" class="container light-bg">
+        <h2>Atitudes para o Cotidiano</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>🚲 Mobilidade Limpa</h3>
+                <p>Trocar o carro pela bicicleta ou transporte público reduz a emissão de poluentes.</p>
+            </div>
+            <div class="card">
+                <h3>💡 Energia Renovável</h3>
+                <p>Apoiar e utilizar fontes limpas de energia, como a solar e a eólica.</p>
+            </div>
+            <div class="card">
+                <h3>🛍️ Zero Plástico</h3>
+                <p>Substituir sacolas plásticas por ecobags e evitar materiais descartáveis.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="desafio" class="container">
+        <h2>Desafio do Consumo Consciente</h2>
+        <div class="quiz-box">
+            <p>Se você tem um objeto eletrônico velho que não funciona mais, qual é o destino correto?</p>
+            <button class="btn-quiz" onclick="escolhaIncorreta()">Jogar na lixeira de lixo comum</button>
+            <button class="btn-quiz" onclick="escolhaCorreta()">Levar a um ponto de coleta especializado (E-lixo)</button>
+            <button class="btn-quiz" onclick="escolhaIncorreta()">Guardar para sempre no armário</button>
+            <p id="resultado-desafio" class="feedback"></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - Consciência Eco-Urbana. O futuro sustentável começa na sua atitude!</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
