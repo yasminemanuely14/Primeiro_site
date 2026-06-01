@@ -3,66 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoCidades | Consumo Consciente</title>
+    <title>Cidades Sustentáveis no Brasil</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo"> EcoCidades🌱</div>
-            <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#ideia">O Conceito</a></li>
-                <li><a href="#pilares">Pilares Urbanos</a></li>
-                <li><a href="#desafio">Desafio Verde</a></li>
-            </ul>
-        </nav>
+
+    <header class="main-header">
+        <div class="container">
+            <h1>🌍 Cidades Sustentáveis</h1>
+            <p>O futuro urbano desenhado pelo equilíbrio ecológico</p>
+        </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-text">
-            <h1>Cidades Inteligentes, Planeta Vivo</h1>
-            <p>Pequenas escolhas no nosso dia a dia transformam o futuro do nosso espaço urbano.</p>
-            <a href="#ideia" class="btn">Mude Seus Hábitos</a>
-        </div>
-    </section>
-
-    <section id="ideia" class="container">
-        <h2>O que é uma Cidade Sustentável?</h2>
-        <p> Uma ecocidade (ou cidade sustentável) é um centro urbano planejado para minimizar sua pegada ecológica e promover uma alta qualidade de vida. O conceito prioriza a harmonia com o meio ambiente, unindo urbanismo, energias limpas, transporte coletivo e preservação de recursos naturais para as próximas gerações.</p>
-    </section>
-
-    <section id="pilares" class="container light-bg">
-        <h2>Atitudes para o Cotidiano</h2>
-        <div class="cards">
+    <main class="container">
+        
+        <!-- O que é e Importância -->
+        <section class="info-section">
             <div class="card">
-                <h3>🚲 Mobilidade Limpa</h3>
-                <p>Trocar o carro pela bicicleta ou transporte público reduz a emissão de poluentes.</p>
+                <h2>O que é uma Cidade Sustentável?</h2>
+                <p>É um município que planeja seu crescimento de forma estratégica, equilibrando o avanço econômico com a preservação ambiental. Elas otimizam o uso de recursos, reduzem desperdícios e garantem inclusão social para todas as gerações.</p>
             </div>
+            
             <div class="card">
-                <h3>💡 Energia Renovável</h3>
-                <p>Apoiar e utilizar fontes limpas de energia, como a solar e a eólica.</p>
+                <h2>Por que ela é importante?</h2>
+                <p>Com mais de 80% da população brasileira vivendo em áreas urbanas, as cidades sustentáveis são vitais para mitigar as mudanças climáticas. Elas reduzem a poluição, evitam desastres naturais e garantem saúde pública através do saneamento e transporte limpo.</p>
             </div>
-            <div class="card">
-                <h3>🛍️ Zero Plástico</h3>
-                <p>Substituir sacolas plásticas por ecobags e evitar materiais descartáveis.</p>
+        </section>
+
+        <!-- Destaques no Brasil -->
+        <section class="ranking-section">
+            <h2>Principais Exemplos no Brasil</h2>
+            <p class="subtitle">Municípios que lideram os índices de desenvolvimento sustentável nacional:</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cidade / UF</th>
+                            <th>Destaque Sustentável</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>São Caetano do Sul (SP)</strong></td>
+                            <td>100% de saneamento básico universalizado.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Barueri (SP)</strong></td>
+                            <td>Governança pública digital e gestão inteligente de resíduos.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Curitiba (PR)</strong></td>
+                            <td>Referência histórica em transporte coletivo (BRT) e áreas verdes.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="desafio" class="container">
-        <h2>Desafio do Consumo Consciente</h2>
-        <div class="quiz-box">
-            <p>Se você tem um objeto eletrônico velho que não funciona mais, qual é o destino correto?</p>
-            <button class="btn-quiz" onclick="escolhaIncorreta()">Jogar na lixeira de lixo comum</button>
-            <button class="btn-quiz" onclick="escolhaCorreta()">Levar a um ponto de coleta especializado (E-lixo)</button>
-            <button class="btn-quiz" onclick="escolhaIncorreta()">Guardar para sempre no armário</button>
-            <p id="resultado-desafio" class="feedback"></p>
-        </div>
-    </section>
+        <!-- Quiz Interativo -->
+        <section class="quiz-section">
+            <h2>Desafio Interativo</h2>
+            <p class="subtitle">Teste seus conhecimentos sobre a nossa realidade urbana:</p>
+            
+            <div id="quiz-container">
+                <div class="quiz-card">
+                    <p class="question-text" id="question">Carregando pergunta...</p>
+                    <div class="options-container" id="options"></div>
+                    <div id="feedback" class="feedback hidden"></div>
+                </div>
+                <button id="next-btn" class="btn hidden">Próxima Pergunta</button>
+            </div>
+        </section>
 
-    <footer>
-        <p>&copy; 2026 - Consciência Eco-Urbana. O futuro sustentável começa na sua atitude!</p>
+    </main>
+
+    <footer class="main-footer">
+        <p>© 2026 — Desenvolvido com foco no Futuro Urbano.</p>
     </footer>
 
     <script src="script.js"></script>
