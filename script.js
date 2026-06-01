@@ -78,7 +78,22 @@ function initQuiz() {
         nextButton.classList.remove("hidden");
     }
 
-    nextButton.addEventListener("click", () => {
+        nextButton.addEventListener("click", () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizData.length) {
+            loadQuestion();
+        } else {
+            // Tela de finalização do quiz
+            questionElement.textContent = "🎉 Parabéns! Você concluiu o desafio sobre Cidades Sustentáveis.";
+            optionsContainer.innerHTML = "";
+            feedbackElement.classList.add("hidden");
+            
+            
+            nextButton.classList.add("hidden");
+            nextButton.style.display = "none"; 
+        }
+    });
+
         currentQuestionIndex++;
         if (currentQuestionIndex < quizData.length) {
             loadQuestion();
